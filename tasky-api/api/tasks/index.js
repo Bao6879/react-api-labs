@@ -5,11 +5,11 @@ import asyncHandler from "express-async-handler";
 const router = express.Router(); // eslint-disable-line
 
 // Get all tasks
-router.post(
+router.get(
   "/",
   asyncHandler(async (req, res) => {
-    const task = await Task(req.body).save();
-    res.status(201).json(task);
+    const tasks = await Task.find();
+    res.status(200).json(tasks);
   }),
 );
 
